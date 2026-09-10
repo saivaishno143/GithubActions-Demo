@@ -1,0 +1,19 @@
+name: Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: this is print statement
+        run: echo "hello everybody"
+  listfiles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: list all files in root folder
+        run: ls -l /
+    
