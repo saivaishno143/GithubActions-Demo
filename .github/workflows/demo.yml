@@ -1,9 +1,7 @@
 name: Demo
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   code:
@@ -12,6 +10,8 @@ jobs:
       - name: this is print statement
         run: echo "hello everybody"
   listfiles:
+    needs:
+      - code # this says only run this job after completion of code
     runs-on: ubuntu-latest
     steps:
       - name: list all files in root folder
