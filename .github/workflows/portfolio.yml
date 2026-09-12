@@ -1,0 +1,31 @@
+name: Portfolio Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.html'
+      - '**.yml'
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+
+      - name: setup github pages
+        uses: actions/setup-pages@v2
+
+
+      - name: upload static files
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: .
+
+        
+      - name: deploy to github pages
+        uses: actions/deploy-pages@v1
+     
