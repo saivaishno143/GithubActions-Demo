@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: Portfolio Deployment
 
 on:
@@ -29,3 +30,45 @@ jobs:
       - name: deploy to github pages
         uses: actions/deploy-pages@v1
      
+=======
+name: Portfolio Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+>>>>>>> 2da10d210df59f93a25bb93c9ffcbc4086f960de

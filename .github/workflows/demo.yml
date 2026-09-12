@@ -1,12 +1,7 @@
 name: Demo
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '**.html'
-      - '**.yml'
+  workflow_dispatch: 
 
 jobs:
   code:
